@@ -17,7 +17,13 @@ const HelloWorldIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'red green blue yellow';
+        //const speakOutput = 'red green blue yellow';
+
+        for(i = 0; i< colors.length; i++){
+            var random = Math.floor(Math.random() * Math.floor(4));
+            ques[i] = colors[random];
+            patternString += ques[i] + " ";
+        }
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('say name of color')
@@ -35,6 +41,13 @@ const getColor =  {
          const responseBuilder = handlerInput.responseBuilder;
        const slots = handlerInput.requestEnvelope.request.intent.slots;
        const colorget = slots['color'].value;
+
+
+       const slots = handlerInput.requestEnvelope.request.intent.slots;
+        ans[0] = slots['colone'].value;
+        ans[1] = slots['coltwo'].value;
+        ans[2] = slots['colthree'].value;
+        ans[3] = slots['colfour'].value;
         
     const speakOutput = `Your number is: ${colorget}.`
       return getColor.responseBuilder
